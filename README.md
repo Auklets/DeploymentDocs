@@ -65,7 +65,7 @@ The environment setup on the docker-machine itself enables deployed docker conta
 
 ## Pull images
 
-Run the following three commands to pull down the require images:
+Run the following three commands to pull down the required images:
 ```sh
 docker pull cshg/loadapp:production
 docker pull cshg/loadmaster:production
