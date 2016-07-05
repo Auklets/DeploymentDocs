@@ -139,7 +139,7 @@ Run MySQL Database container with the following command (make sure to use your o
 
 Run the main application with the following command:
 ```sh
-  dk run -d --name web -p 80:8000 -v /env:/env/ --link mysql cshg/loadapp:production
+  docker run -d --name web -p 80:8000 -v /env:/env/ --link mysql cshg/loadapp:production
 ```
 
 ## Monitor Containers
