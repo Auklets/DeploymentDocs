@@ -63,6 +63,30 @@ The environment setup on the docker-machine itself enables deployed docker conta
 
 ### Certificates
 
+After creating the docker-machine on a virtual private server the certificates for the connection are stored in the folloing directory (Mac):
+
+```sh
+  ~/.docker/machine/machines/"machine-name"
+```
+Those certificates have to be copied on to the docker-machine in the /env directory with the following command:
+
+```sh
+  docker-machine scp -r ~/.docker/machine/machines/"machine-name" "machine-name":/env
+
+  specific example:
+  docker-machine scp ~/.docker/machine/machines/aws01 aws01:/env
+```
+
+After that ssh into your docker-machine:
+```sh
+  docker-machine ssh "machine-name"
+```
+
+And rename the folder to certs:
+```sh
+  mv /env/aws01 /env/certs
+```
+
 ## Pull images
 
 Run the following three commands to pull down the required images:
@@ -74,14 +98,14 @@ docker pull cshg/loadworker:production
 
 ## Run Containers
 
-### MySQL Database
+#### MySQL Database
 
 Run MySQL Database container with the following command (make sure to use your own password):
 ```sh
   docker run --name mysql -e MYSQL_DATABASE=lta -e MYSQL_ROOT_PASSWORD="yourpassword" -d mysql/mysql-server
 ```
 
-### Web Application
+#### Web Application
 
 Run the main application with the following command:
 ```sh
