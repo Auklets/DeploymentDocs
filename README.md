@@ -132,6 +132,7 @@ docker pull cshg/loadapp:production
 docker pull cshg/loadmaster:production
 docker pull cshg/loadworker:production
 ```
+Hint: Redo the image pulls to get the latest versions at a later point in time.
 
 ## Run Containers
 
