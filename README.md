@@ -76,7 +76,17 @@ docker pull cshg/loadworker:production
 
 ### MySQL Database
 
+Run MySQL Database container with the following command (make sure to use your own password):
+```sh
+  docker run --name mysql -e MYSQL_DATABASE=lta -e MYSQL_ROOT_PASSWORD="yourpassword" -d mysql/mysql-server
+```
+
 ### Web Application
+
+Run the main application with the following command:
+```sh
+  dk run -d --name web -p 80:8000 -v /env:/env/ --link mysql cshg/loadapp:production
+```
 
 ## Monitor Containers
 
