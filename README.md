@@ -61,6 +61,32 @@ The environment setup on the docker-machine itself enables deployed docker conta
 
 ### Environment variables
 
+1. Make a copy of the config.example.env file and name it production.env
+
+2. Adjust all the necessary environment variables:
+
+```sh
+NODE_ENV=production
+APP_NAME=lta
+PROTOCOL=http://
+JWT_SECRET=               -> your personal JWT_SECRET (any string)
+WEB_HOST=                 -> the IP of your virtual private server
+DOCKER_HOST=              -> the IP of your virtual private server
+DB_HOST=                  -> the alias of your mysql database (suggested: mysql)
+WEB_PORT=8000             -> the main application port: normally 8000
+MASTER_PORT=2000          -> the master port: normally 2000
+WORKER_PORT=5000          -> the worker port: normally 5000
+DOCKER_PORT=2376          -> the docker port: normally 2376
+DB_USER=root              -> your DB user, normally root
+DB_PASSWORD=              -> your DB password, if used
+```
+
+3. Copy the production.env file on your docker-machine with the scp command:
+
+```sh
+  docker-machine scp "local-path-to-production.env-file" "machine-name":/env
+```
+
 ### Certificates
 
 After creating the docker-machine on a virtual private server the certificates for the connection are stored in the folloing directory (Mac):
@@ -86,6 +112,10 @@ And rename the folder to certs:
 ```sh
   mv /env/aws01 /env/certs
 ```
+
+#### Final check
+
+Final step: check if the right production.env file is in your /env folder and the certificate files (especially ca.pem, certs.pem and key.pem) are in the /env/certs.
 
 ## Pull images
 
