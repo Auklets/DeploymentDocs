@@ -144,4 +144,28 @@ Run the main application with the following command:
 
 ## Monitor Containers
 
+These commands enable you to monitor if your docker containers run and interact correctly.
+
+Basic command to check docker-machine status and shell connection:
+```sh
+  docker-machine ls
+```
+
+Basic command to check all containers and their run status:
+```sh
+  docker ps -a
+```
+
+Command to log container status and follow logs:
+```sh
+  docker logs -f "container-name or id"
+```
+
+Command to ssh into container:
+```sh
+  docker exec -it "container-name or id" /bin/bash
+```
+
+
+
 
