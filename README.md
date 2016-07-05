@@ -59,6 +59,13 @@ Run eval command to connect current shell to the docker-machine:
 
 The environment setup on the docker-machine itself enables deployed docker containers to access sensitive data, which is not provided within the docker image.
 
+Preparation: ssh into your docker-machine and create a folder called /env.
+```sh
+docker-machine ssh "machine-name"
+
+mkdir /env
+```
+
 ### Environment variables
 
 1. Make a copy of the config.example.env file and name it production.env
