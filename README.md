@@ -181,9 +181,12 @@ docker run -it --link mysql:mysql --rm mysql/mysql-server sh -c 'exec mysql -h"$
 
 ##INTERNAL: Update images to latest production version
 
-1. Pull down latest changes from master on to local master fork:
+1. Pull down latest changes from master and production on to local fork:
 ```sh
+git checkout master
 git pull upstream master
+git checkout production
+git pull upstream production
 ```
 2. Switch to local production branch and merge changes from master
 ```sh
