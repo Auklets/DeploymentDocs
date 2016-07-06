@@ -179,6 +179,27 @@ Command to check MySQL DB:
 docker run -it --link mysql:mysql --rm mysql/mysql-server sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
 ```
 
+##INTERNAL: Update images to latest production version
+
+1. Pull down latest changes from master on to local master fork:
+```sh
+git pull upstream master
+```
+2. Switch to local production branch and merge changes from master
+```sh
+git checkout production
+git merge master
+```
+3. Push up changes from local production to upstream production
+```sh
+git push upstream production
+```
+4. Update images
+```sh
+docker pull cshg/loadapp:production
+docker pull cshg/loadmaster:production
+docker pull cshg/loadworker:production
+```
 
 
 
