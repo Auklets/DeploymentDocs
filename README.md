@@ -179,6 +179,11 @@ Command to check MySQL DB:
 docker run -it --link mysql:mysql --rm mysql/mysql-server sh -c 'exec mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD"'
 ```
 
+Command to remove all containers:
+```sh
+docker rm $(docker ps -a -q)
+```
+
 ##INTERNAL: Update images to latest production version
 
 1. Pull down latest changes from master and production on to local fork:
